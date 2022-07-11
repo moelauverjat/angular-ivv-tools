@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-ivv-tools';
+  title = 'IVV TOOLS';
+
+  constructor(private router: Router) {
+
+  }
+
+  getUser() {
+    return sessionStorage.getItem('user');
+  }
+
+  disconnect() {
+    sessionStorage.removeItem('user');
+    this.router.navigate(['/connect'])
+    }
 }

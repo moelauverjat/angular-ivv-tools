@@ -1,0 +1,23 @@
+<form #f="ngForm" (ngSubmit)="onFormSubmit(f)" *ngIf="!getUser()" novalidate>
+    <div class="form-wrapper">
+        <label>Email</label>
+        <input name="email" type="email" placeholder="Your email" ngModel #champEmail="ngModel" email="true" required>
+        <div *ngIf="champEmail.invalid && (champEmail.touched)" class="alert">
+            <span *ngIf="champEmail.errors?.['email']">This isn't an email !</span>
+            <span *ngIf="champEmail.errors?.['required']">Required field !</span>
+        </div>
+        <label>Password</label>
+        <input name="password" type="password" placeholder="Your password" ngModel #champPassword="ngModel" required>
+        <div *ngIf="champPassword.invalid && (champPassword.touched)" class="alert">
+            <span *ngIf="champPassword.errors?.['required']">Required field !</span>
+        </div>
+    </div>
+    <div class="button-wrapper" *ngIf="f.valid" [style.visibility]="f.valid ? 'visible' : 'hidden'">
+        <button class="button-connect" type="submit">CONNECT</button>
+    </div>
+
+</form>
+
+<div class="text-wrapper" *ngIf="getUser()">
+    <p class="already-connected">You've already registered</p>
+</div>

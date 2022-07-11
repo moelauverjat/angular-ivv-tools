@@ -1,0 +1,35 @@
+<div *ngIf="getUser()">
+    <div class="header-wrapper">
+        <!--fieldset class="tags-fieldset">
+            <legend>Choose your labels :</legend>
+        </fieldset-->
+        <div class="button-wrapper">
+            <button class="button" (click)="refreshIssues()">Refresh Data</button>
+        </div>
+    </div>
+    <table class="responstable">
+        <tr>
+            <th>N°</th>
+            <th>Title</th>
+            <th>Link</th>
+            <th>Workaround</th>
+            <th>Created at</th>
+            <th>Closed at</th>
+        </tr>
+        <tr *ngFor="let issue of issues.slice().reverse()">
+            <td>{{ issue.number }}</td>
+            <td>{{ issue.title }}</td>
+            <td><a href="{{ issue.link }}" target="_blank">See more</a></td>
+            <td *ngIf="issue.workaround" class="good">Workaround</td>
+            <td *ngIf="!issue.workaround" class="notgood">Need a fix</td>
+            <td>{{ issue.creation }}</td>
+            <td *ngIf="issue.closure" class="good">{{ issue.closure }}</td>
+            <td *ngIf="!issue.closure" class="notgood">Not close</td>
+        </tr>
+    </table>
+</div>
+
+<div class="text-wrapper" *ngIf="!getUser()">
+    <p class="already-connected">Sorry, you're not allowed to access this page if you're not register :</p>
+    <button class="button-connect" routerLink="/connect" routerLinkActive="actif">CONNECT</button>
+</div>
