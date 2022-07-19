@@ -1,3 +1,5 @@
+/*Le style pour disposer les éléments au centre de la page*/
+
 .form-wrapper {
     display: flex;
     align-items: start;
@@ -9,11 +11,17 @@
     margin-right: auto;
 }
 
+
+/*Le style pour que les élèments soit moins large sur mobile*/
+
 @media (max-width: 610px) {
     .form-wrapper {
         width: 300px;
     }
 }
+
+
+/*Le style du texte*/
 
 label,
 .already-connected {
@@ -22,6 +30,9 @@ label,
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+
+/*Le style pour la bordure des input et l'intérieur des inputs*/
 
 input {
     font-size: 1.5rem;
@@ -34,16 +45,32 @@ input {
     color: #08698a;
 }
 
+
+/*Le style pour que les élèments soit moins large sur mobile*/
+
 @media (max-width: 610px) {
     input {
         width: 300px;
     }
 }
 
+
+/*Le style pour la bordure des input et l'intérieur des inputs quand la saisis est invalide*/
+
+input:invalid {
+    border: 1px solid lightgray;
+}
+
+
+/*Le style pour centrer le bouton connect*/
+
 .button-wrapper {
     align-items: center;
     text-align: center;
 }
+
+
+/*Le style pour dire l'apparence du bouton*/
 
 .button-connect {
     text-decoration: none;
@@ -55,14 +82,16 @@ input {
     width: auto;
 }
 
+
+/*Le style pour dire l'apparence du bouton quand on met la souris dessus*/
+
 .button-connect:hover {
     background-color: #8eb9eb;
     color: #08698a;
 }
 
-input:invalid {
-    border: 1px solid lightgray;
-}
+
+/*Le style pour le texte des alertes*/
 
 .alert {
     margin: 0;
@@ -71,6 +100,9 @@ input:invalid {
     text-align: left;
     color: rgb(180, 61, 37);
 }
+
+
+/*Le style pour le texte quand l'utilisateur n'a pas le droit d'accéder à la page web.*/
 
 .text-wrapper {
     display: flex;

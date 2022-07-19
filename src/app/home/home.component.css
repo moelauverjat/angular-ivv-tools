@@ -1,3 +1,5 @@
+/*Permet d'afficher les élèments aux centres*/
+
 .home-wrapper {
     display: flex;
     align-items: center;
@@ -5,6 +7,9 @@
     justify-content: center;
     margin-top: auto;
 }
+
+
+/*Le style du titre principal*/
 
 h1 {
     box-align: center;
@@ -27,6 +32,9 @@ h1 {
         font-size: 4rem;
     }
 }
+
+
+/*Le style du sous-titre*/
 
 .subtitle {
     font-family: "Ubuntu-Light";
@@ -51,6 +59,9 @@ h1 {
         font-size: 2rem;
     }
 }
+
+
+/*Le style du bouton*/
 
 .button-accueil {
     text-decoration: none;

@@ -9,6 +9,7 @@ import { AppComponent } from '../app.component';
 export class HomeComponent implements OnInit {
 
   title: string = "";
+  
   constructor(private app: AppComponent) { 
     this.title = app.title;
 

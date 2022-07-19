@@ -12,36 +12,36 @@ import { Router } from '@angular/router';
 })
 export class ConnectComponent implements OnInit {
 
+  /*Les variables*/
+  /*Les composants importés*/
   userService: UserService;
+  /*Variable pour temporairement stocker l'utilisateur et le mot de passe*/
   loginUser!: User;
 
+  /*Le constructeur*/
   constructor(private user: UserService, private router: Router) {
     this.userService = user;
   }
 
   ngOnInit(): void {
-    console.log("On est dans le constructeur du composant connect");
   }
 
   /**
-   * Traite la soumission du formulaire
-   * d'ajout d'une personne
+   * Traite la soumission du formulaire pour se connecter à l'appli
    * @param form 
    */
   onFormSubmit(form: NgForm) {
-
-    console.log("On est dans onFormSubmit");
-
+    /*Stocke les données du formulaire dans une variable*/
     this.loginUser = {
       email: form.value.email,
       password: form.value.password
     };
 
+    /*S'abonne à un observable qui attend la réponse du serveur*/
     this.userService.validate(this.loginUser).subscribe(
         (v : Validate) => {
           if (v.valid == true) {
             sessionStorage.setItem('user', this.loginUser.email);
-            console.log("Cet email est dans l'api : " + sessionStorage.getItem('user'));
             this.router.navigate(['/ivvtools'])
           }
           if (v.valid == false) {
@@ -50,7 +50,8 @@ export class ConnectComponent implements OnInit {
         }
       );
   }
-
+  
+  /*S'abonne à un observable qui attend la réponse du serveur*/
   formValueToUser(form: any): User {
     return {
       email: form.value.email,
@@ -59,6 +60,7 @@ export class ConnectComponent implements OnInit {
 
   }
 
+  /*Permet de récupérer l'email de l'utilisateur connecté*/
   getUser() {
     return sessionStorage.getItem('user');
   }

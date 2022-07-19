@@ -1,4 +1,4 @@
-//version légère d'une classe
+//Pour stocker les issues
 export interface Issue {
     number: number;
     title: string;

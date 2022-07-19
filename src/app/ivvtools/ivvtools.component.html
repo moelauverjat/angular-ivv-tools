@@ -1,3 +1,17 @@
+<!--Le loading screen-->
+<ng-container *ngIf="loading$ | async">
+    <div class="overlay">
+        <div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+        </div>
+    </div>
+</ng-container>
+
+<!--La page quand l'utilisateur est connecté-->
 <div *ngIf="getUser()">
     <div class="header-wrapper">
         <!--fieldset class="tags-fieldset">
@@ -7,7 +21,7 @@
             <button class="button" (click)="refreshIssues()">Refresh Data</button>
         </div>
     </div>
-    <table class="responstable">
+    <table class="table">
         <tr>
             <th>N°</th>
             <th>Title</th>
@@ -29,7 +43,8 @@
     </table>
 </div>
 
+<!--La page quand l'utilisateur n'est pas connecté-->
 <div class="text-wrapper" *ngIf="!getUser()">
-    <p class="already-connected">Sorry, you're not allowed to access this page if you're not register :</p>
-    <button class="button-connect" routerLink="/connect" routerLinkActive="actif">CONNECT</button>
+    <p class="already-connected">Sorry, you're not allowed to access this page if you're not registered :</p>
+    <button class="button" routerLink="/connect" routerLinkActive="actif">CONNECT</button>
 </div>

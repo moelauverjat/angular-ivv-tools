@@ -1,4 +1,141 @@
-.responstable {
+/*************************************************************
+******************Loading Screen Style************************
+*************************************************************/
+
+
+/*Rend l'écran blanc transparent*/
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, .9);
+}
+
+
+/*Positionne le loader au centre de l'écran*/
+
+.overlay div {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+
+/*Apparence du loader*/
+
+.loader {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: .5rem;
+    animation: scaling 2.5s ease-in-out infinite;
+}
+
+
+/*Annimations du loader*/
+
+@keyframes scaling {
+    0%,
+    100% {
+        transform: scale(0.2);
+        background-color: #30FFb7;
+    }
+    40% {
+        transform: scale(1);
+        background-color: #07deff;
+    }
+    50% {
+        transform: scale(1);
+        background-color: #0761ff;
+    }
+}
+
+.loader:nth-child(0) {
+    animation-delay: 0s;
+}
+
+.loader:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.loader:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.loader:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.loader:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.loader:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+
+/*************************************************************
+************************Header Style**************************
+*************************************************************/
+
+
+/*Positionnement du header*/
+
+.header-wrapper {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    margin: 3%;
+}
+
+
+/*Place relative que prend le fieldset (par rapport aux boutons)*/
+
+.tags-fieldset {
+    flex: 3;
+}
+
+
+/*Positionnement du wrapper des boutons*/
+
+.button-wrapper {
+    margin-left: 30px;
+}
+
+
+/*Style des boutons*/
+
+.button {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    background-color: #08698a;
+    padding: 10px;
+    width: auto;
+}
+
+
+/*Style des boutons quand la souris est dessus*/
+
+.button:hover {
+    background-color: #8eb9eb;
+    color: #08698a;
+}
+
+
+/*************************************************************
+*************************Table Style**************************
+*************************************************************/
+
+
+/*Style de la table*/
+
+.table {
     margin: 1em 0;
     width: 94%;
     overflow: hidden;
@@ -39,6 +176,9 @@ tr:nth-child(2n+1) {
     background-color: #d8e3f4;
 }
 
+
+/*Couleur du texte du texte des champs 'workaround' et 'closed at'*/
+
 .notgood {
     color: #c31437;
 }
@@ -46,6 +186,9 @@ tr:nth-child(2n+1) {
 .good {
     color: #4db419;
 }
+
+
+/*Couleur des liens*/
 
 a {
     color: #1e1eb0;
@@ -59,34 +202,13 @@ a:hover {
     color: #03a6dc;
 }
 
-.header-wrapper {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: row;
-    margin: 3%;
-}
 
-.tags-fieldset {
-    flex: 3;
-}
+/*************************************************************
+*********************Disconnected Style***********************
+*************************************************************/
 
-.button-wrapper {
-    margin-left: 30px;
-}
 
-.button {
-    text-decoration: none;
-    font-size: 1rem;
-    color: white;
-    background-color: #08698a;
-    padding: 10px;
-    width: auto;
-}
-
-.button:hover {
-    background-color: #8eb9eb;
-    color: #08698a;
-}
+/*Positionnement des élèments dans lage page (centrer)*/
 
 .text-wrapper {
     margin-top: 200px;
@@ -99,18 +221,13 @@ a:hover {
     justify-content: center;
 }
 
+
+/*Style du texte*/
+
 .already-connected {
     font-size: 1.5rem;
     color: #4088a0;
     display: inline-block;
     vertical-align: middle;
     text-align: center;
-}
-
-mat-progress-spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
 }

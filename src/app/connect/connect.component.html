@@ -1,3 +1,4 @@
+<!--L'apparence de la page quand l'utilisateur n'est pas connecté-->
 <form #f="ngForm" (ngSubmit)="onFormSubmit(f)" *ngIf="!getUser()" novalidate>
     <div class="form-wrapper">
         <label>Email</label>
@@ -18,6 +19,7 @@
 
 </form>
 
+<!--L'apparence de la page quand l'utilisateur est déjà connecté-->
 <div class="text-wrapper" *ngIf="getUser()">
     <p class="already-connected">You've already registered</p>
 </div>
