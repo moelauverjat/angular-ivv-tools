@@ -13,14 +13,17 @@
 
 <!--La page quand l'utilisateur est connecté-->
 <div *ngIf="getUser()">
+    <!--header-->
     <div class="header-wrapper">
         <!--fieldset class="tags-fieldset">
             <legend>Choose your labels :</legend>
         </fieldset-->
         <div class="button-wrapper">
             <button class="button" (click)="refreshIssues()">Refresh Data</button>
+            <button *ngIf="getUser() == 'alice.durand@csgroup.eu'" class="button" (click)="refreshUsers()">Refresh Users</button>
         </div>
     </div>
+    <!--table-->
     <table class="table">
         <tr>
             <th>N°</th>

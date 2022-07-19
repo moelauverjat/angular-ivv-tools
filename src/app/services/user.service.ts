@@ -11,6 +11,7 @@ export class UserService {
   /*Les strings contenant les Url a appelé pour accéder à la base de donnée*/
   URL: string = 'http://127.0.0.1:5000/';
   URLVALIDATE : string = this.URL+"validateuser";
+  URLFILLUSERSDATABASE : string = this.URL+"fillusersdatabase"
 
   // Options nécessaires pour certains appels http
   private httpOptions = {
@@ -25,6 +26,11 @@ export class UserService {
   /*Vérifie l'email et le mot de passe dans la BDD MySQL*/
   validate(user:User) : Observable<Validate> {  
     return this.http.post<Validate>(this.URLVALIDATE, user, this.httpOptions);
+  }
+
+  /*Actualise la liste des issues dans la BDD MySQL*/
+  refreshAllUsers() : Observable<Validate> {
+    return this.http.get<Validate>(this.URLFILLUSERSDATABASE, this.httpOptions);
   }
   
 }

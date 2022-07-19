@@ -87,10 +87,11 @@
 /*Positionnement du header*/
 
 .header-wrapper {
-    margin-top: 50px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 60px;
     display: flex;
     flex-direction: row;
-    margin: 3%;
 }
 
 
@@ -105,12 +106,15 @@
 
 .button-wrapper {
     margin-left: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 
 /*Style des boutons*/
 
 .button {
+    margin: 5px;
     text-decoration: none;
     font-size: 1rem;
     color: white;
