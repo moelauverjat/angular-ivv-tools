@@ -2,7 +2,7 @@ import { Component, createPlatform, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { Validate } from '../models/Validate';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({

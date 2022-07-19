@@ -1,11 +1,9 @@
-import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Issue } from '../models/Issue';
-import { User } from '../models/User';
 import { Router } from '@angular/router';
 import { Validate } from '../models/Validate';
-import { LoadingService } from '../loading.service';
-import { IssuesService } from '../issues.service';
+import { IssuesService } from '../services/issues.service';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-ivvtools',
