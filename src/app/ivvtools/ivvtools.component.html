@@ -25,7 +25,9 @@
             <p *ngIf="hiddentags">Show more options<button (click)="showHiddenTags()" class="button button-selector">+</button></p>
             <p *ngIf="!hiddentags">Hide more options<button (click)="hideHiddenTags()" class="button button-selector">-</button></p>
             <ng-container *ngIf="!hiddentags">
-                <button class="button" [ngClass]="{'selectedButton' : otherTagButton === 'infra'}" (click)="listTagIssues('infra')">Infra</button>
+                <ng-container *ngFor="let tag of allTags">
+                    <button class="button" [ngClass]="{'selectedButton' : otherTagButton === tag.tag}" (click)="listTagIssues(tag.tag)">{{ tag.tag }}</button>
+                </ng-container>
             </ng-container>
         </fieldset>
         <div class="button-wrapper">

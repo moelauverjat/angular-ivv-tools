@@ -5,6 +5,8 @@ import { Validate } from '../models/Validate';
 import { IssuesService } from '../services/issues.service';
 import { LoadingService } from '../services/loading.service';
 import { UserService } from '../services/user.service';
+import { TagsService } from '../services/tags.service';
+import { Tag } from '../models/tag';
 @Component({
   selector: 'app-ivvtools',
   templateUrl: './ivvtools.component.html',
@@ -16,11 +18,13 @@ export class IvvtoolsComponent implements OnInit {
   /*Import du composant*/
   issuesService: IssuesService;
   userService: UserService;
+  tagService: TagsService;
   /*Pour utilise le loader*/
   loading$ = this.loader.loading$;
   /*Pour stocker la liste des issues*/
   issues: Issue[] = []
   allIssues: Issue[] = []
+  allTags: Tag[] = []
   tags: String[] = []
   count: number = 0;
   countHidden: number = 0;
@@ -32,14 +36,22 @@ export class IvvtoolsComponent implements OnInit {
   hiddentags = true;
   
   /*Le constructeur*/
-  constructor(private u: UserService, private i: IssuesService, private router: Router, public loader: LoadingService) {
+  constructor(
+    private u: UserService, 
+    private i: IssuesService,
+    private t: TagsService, 
+    private router: Router, 
+    public loader: LoadingService) 
+    {
     this.issuesService = i;
     this.userService = u;
+    this.tagService = t;
    }
 
   /*Le constructeur de la page web*/
   ngOnInit(): void {
     this.getAllIssues()
+    this.getAllTags()
   }
 
   /*S'inscrit à un observable qui attend la liste des issues*/
@@ -48,6 +60,16 @@ export class IvvtoolsComponent implements OnInit {
       (i : Issue[]) => {
         this.allIssues = i;
         this.listAllIssues();
+      }
+    )
+  }
+
+  /*S'inscrit à un observable qui attend la liste des tags*/
+  getAllTags() {
+    this.tagService.getAllIssues().subscribe(
+      (t : Tag[]) => {
+        this.allTags = t;
+        console.log(this.allTags)
       }
     )
   }
