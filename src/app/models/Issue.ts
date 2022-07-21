@@ -7,3 +7,5 @@ export interface Issue {
     creation: string;
     closure: string | null;
 }
+
+export type issuesfunction = (n:number) => boolean;

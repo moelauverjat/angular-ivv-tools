@@ -9,3 +9,4 @@ export interface Validate {
     valid: boolean;
     error: string;
 }
+

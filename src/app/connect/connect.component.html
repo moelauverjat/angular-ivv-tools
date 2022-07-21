@@ -1,12 +1,16 @@
 <!--L'apparence de la page quand l'utilisateur n'est pas connecté-->
 <form #f="ngForm" (ngSubmit)="onFormSubmit(f)" *ngIf="!getUser()" novalidate>
     <div class="form-wrapper">
+        <div>
+            <span class="alert">{{ validate.error }}</span>
+        </div>
         <label>Email</label>
         <input name="email" type="email" placeholder="Your email" ngModel #champEmail="ngModel" email="true" required>
         <div *ngIf="champEmail.invalid && (champEmail.touched)" class="alert">
             <span *ngIf="champEmail.errors?.['email']">This isn't an email !</span>
             <span *ngIf="champEmail.errors?.['required']">Required field !</span>
         </div>
+
         <label>Password</label>
         <input name="password" type="password" placeholder="Your password" ngModel #champPassword="ngModel" required>
         <div *ngIf="champPassword.invalid && (champPassword.touched)" class="alert">

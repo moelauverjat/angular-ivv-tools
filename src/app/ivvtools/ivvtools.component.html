@@ -15,16 +15,28 @@
 <div *ngIf="getUser()">
     <!--header-->
     <div class="header-wrapper">
-        <!--fieldset class="tags-fieldset">
-            <legend>Choose your labels :</legend>
-        </fieldset-->
+        <fieldset class="tags-fieldset">
+            <legend>Choose filter option :</legend>
+            <button class="button" [ngClass]="{'selectedButton' : allTagButton === true}" (click)="listAllIssues()">All</button>
+            <button class="button" [ngClass]="{'selectedButton' : workaroundTagButton === 'workaround'}" (click)="listWorkaroundIssues()">Workaround</button>
+            <button class="button" [ngClass]="{'selectedButton' : workaroundTagButton === 'noworkaround'}" (click)="listNoWorkaroundIssues()">No Workaround</button>
+            <button class="button" [ngClass]="{'selectedButton' : closeTagButton === 'closed'}" (click)="listClosedIssues()">Close</button>
+            <button class="button" [ngClass]="{'selectedButton' : closeTagButton === 'notclosed'}" (click)="listNotClosedIssues()">Not Close</button>
+            <p *ngIf="hiddentags">Show more options<button (click)="showHiddenTags()" class="button button-selector">+</button></p>
+            <p *ngIf="!hiddentags">Hide more options<button (click)="hideHiddenTags()" class="button button-selector">-</button></p>
+            <ng-container *ngIf="!hiddentags">
+                <button class="button" [ngClass]="{'selectedButton' : otherTagButton === 'infra'}" (click)="listTagIssues('infra')">Infra</button>
+            </ng-container>
+        </fieldset>
         <div class="button-wrapper">
             <button class="button" (click)="refreshIssues()">Refresh Data</button>
             <button *ngIf="getUser() == 'alice.durand@csgroup.eu'" class="button" (click)="refreshUsers()">Refresh Users</button>
         </div>
     </div>
+    <div class="metadata-wrapper">Ivv Tools finds {{ count }} bugs {{ displayText }}. </div>
     <!--table-->
     <table class="table">
+
         <tr>
             <th>N°</th>
             <th>Title</th>

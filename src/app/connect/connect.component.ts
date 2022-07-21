@@ -17,6 +17,10 @@ export class ConnectComponent implements OnInit {
   userService: UserService;
   /*Variable pour temporairement stocker l'utilisateur et le mot de passe*/
   loginUser!: User;
+  validate: Validate = {
+    valid:true,
+    error:''
+  }
 
   /*Le constructeur*/
   constructor(private user: UserService, private router: Router) {
@@ -40,6 +44,7 @@ export class ConnectComponent implements OnInit {
     /*S'abonne à un observable qui attend la réponse du serveur*/
     this.userService.validate(this.loginUser).subscribe(
         (v : Validate) => {
+          this.validate = v
           if (v.valid == true) {
             sessionStorage.setItem('user', this.loginUser.email);
             this.router.navigate(['/ivvtools'])

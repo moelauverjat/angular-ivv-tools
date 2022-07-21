@@ -123,12 +123,38 @@
     width: auto;
 }
 
+.button-selector {
+    margin: 3px;
+    padding: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 
 /*Style des boutons quand la souris est dessus*/
 
 .button:hover {
     background-color: #8eb9eb;
     color: #08698a;
+}
+
+
+/*Style des boutons quand la souris est dessus*/
+
+.selectedButton {
+    background-color: #f082bb;
+    color: #073b4c;
+}
+
+
+/*Positionnement du header*/
+
+.metadata-wrapper {
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 1%;
+    display: flex;
+    flex-direction: row;
 }
 
 
