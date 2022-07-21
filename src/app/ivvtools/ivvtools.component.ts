@@ -64,9 +64,8 @@ export class IvvtoolsComponent implements OnInit {
 
   /*Le constructeur de la page web*/
   ngOnInit(): void {
-    this.getAllIssues();
     this.getAllTags();
-    this.listAllIssues();
+    this.getAllIssues();
   }
 
 /****************************************************************
@@ -78,6 +77,7 @@ export class IvvtoolsComponent implements OnInit {
     this.issuesService.getAllIssues().subscribe(
       (i : Issue[]) => {
         this.allIssues = i;
+        this.listAllIssues();
       }
     )
   }
@@ -157,7 +157,7 @@ export class IvvtoolsComponent implements OnInit {
     // Reset all others filter value
     this.workaroundTagButton = "";
     this.closeTagButton = "";
-    this.otherTagButton = ""
+    this.otherTagButton = "";
   }
 
   /**
@@ -289,9 +289,9 @@ export class IvvtoolsComponent implements OnInit {
       // Test if one of the others filter is selected
       if(this.otherTagButton != ""){
         // Supress all bugs that are not the chosen tag
+        const tag = "[" + this.otherTagButton + "]"
         this.listIssues((i:number) => !this.issues[i].title.toLowerCase().includes(tag))
         // Actualize displayed text
-        const tag = "[" + this.otherTagButton + "]"
         if(this.displayText != "") {
           let temp = this.displayText + " and with " + tag + " label";
           this.displayText = temp;
