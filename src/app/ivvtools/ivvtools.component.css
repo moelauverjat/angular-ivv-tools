@@ -123,6 +123,9 @@
     width: auto;
 }
 
+
+/*The style for the button '+' '-' in the header */
+
 .button-selector {
     margin: 3px;
     padding: 5px;
