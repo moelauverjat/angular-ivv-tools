@@ -48,6 +48,8 @@ export class IvvtoolsComponent implements OnInit {
   otherTagButton = ""
   // Show or hide more options in html page
   hiddentags = true;
+  // The email of the admin
+  admin = "alice.durand@csgroup.eu"
   
   /*The constructor*/
   constructor(
