@@ -31,6 +31,7 @@
             </ng-container>
         </fieldset>
         <div class="button-wrapper">
+            <button class="button" (click)="saveDataInCSV()">Download<br>CSV</button>
             <button class="button" (click)="refreshIssues()">Refresh Data</button>
             <button *ngIf="getUser() == admin" class="button" (click)="refreshUsers()">Refresh Users</button>
         </div>

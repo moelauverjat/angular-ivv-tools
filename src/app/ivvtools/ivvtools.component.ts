@@ -7,6 +7,7 @@ import { LoadingService } from '../services/loading.service';
 import { UserService } from '../services/user.service';
 import { TagsService } from '../services/tags.service';
 import { Tag } from '../models/tag';
+import { CsvService } from '../services/csv.service';
 @Component({
   selector: 'app-ivvtools',
   templateUrl: './ivvtools.component.html',
@@ -56,6 +57,7 @@ export class IvvtoolsComponent implements OnInit {
     private u: UserService, 
     private i: IssuesService,
     private t: TagsService, 
+    private _csvService: CsvService,
     private router: Router, 
     public loader: LoadingService) 
     {
@@ -325,9 +327,30 @@ export class IvvtoolsComponent implements OnInit {
     this.allTagButton = false;
   }
 
+  /****************************************************************
+ *************************Download csv*****************************
+ *****************************************************************/
+
+  /* Permer à l'utilisateur de télécharger la liste des issues couramment affiché 
+  à l'écran au format .CSV*/
+  public saveDataInCSV(): void {
+    // Appel la fonction saveDateInCsv du service CsvService
+    let csvContent = this._csvService.saveDataInCSV(this.issues);
+
+    // Crée un document
+    var hiddenElement = document.createElement('a');
+    // Remplie le document avec les données
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+    // Dit que le téléchargemnt doit se faire sur un autre onglet
+    hiddenElement.target = '_blank';
+    // Donne le nom du document
+    hiddenElement.download = 'list_issues_github.csv';
+    hiddenElement.click();
+  }
+
 /****************************************************************
- *******************Others functions*****************************
- ***************************************************************/
+ *************************Others functions*****************************
+ *****************************************************************/
 
   /*Permet de récupérer l'email de l'utilisateur connecté*/
   getUser() {
