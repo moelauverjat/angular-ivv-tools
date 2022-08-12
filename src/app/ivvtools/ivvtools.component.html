@@ -36,7 +36,7 @@
             <button *ngIf="getUser() == admin" class="button" (click)="refreshUsers()">Refresh Users</button>
         </div>
     </div>
-    <div class="metadata-wrapper">Ivv Tools finds {{ count }} bugs {{ displayText }}. </div>
+    <div class="metadata-wrapper">Ivv Tools finds {{ issues.length }} bugs {{ displayText }}. </div>
     <!--table-->
     <table class="table">
 

@@ -27,10 +27,6 @@ export class IvvtoolsComponent implements OnInit {
   allIssues: Issue[] = []
   //Store the list of all tags displayed under the "show more options"
   allTags: Tag[] = []
-  // Store the number of displayed bugs
-  count: number = 0;
-  // Store the number of bugs
-  countHidden: number = 0;
   // Store the string that show the number of bugs
   displayText: String = "in total"
   /** This variables bellow store the state of filter button in the header
@@ -146,14 +142,6 @@ export class IvvtoolsComponent implements OnInit {
      * In writing like this, we copy the data inside the variable, and not the reference
      */
     this.issues = JSON.parse(JSON.stringify(this.allIssues));
-    // Initialize the count variable
-    this.count = 0;
-    // Count the number of bugs
-    this.allIssues.forEach(issue => {
-        this.count = this.count + 1;
-      });
-    // Remember the total number of bugs in a hidden count variable
-    this.countHidden = this.count;
     // Mofidy the text before the table that show the number of bug in the list
     this.displayText = "in total";
     // Show the all filter in purple
@@ -243,8 +231,6 @@ export class IvvtoolsComponent implements OnInit {
     /*Reset the list of tag for it contains all tags
     For more info about this ligne, go to listAllIssues function*/
     this.issues = JSON.parse(JSON.stringify(this.allIssues));
-    // Reset the count of the number of tag with the hidden count that store the total number of bugs
-    this.count = this.countHidden;
     // Reset the display text (text that show the number of bug in the list)
     this.displayText = "";
     // Test if one of the 3 kind of tag is selectionned
@@ -319,8 +305,6 @@ export class IvvtoolsComponent implements OnInit {
     for (var i = this.issues.length - 1; i >= 0; i--) {
       if(testIssues(i)) {
         this.issues.splice(i, 1);
-        // Actualize count
-        this.count = this.count - 1;
       }
     };
     // Make the 'all' filter to not be purple
